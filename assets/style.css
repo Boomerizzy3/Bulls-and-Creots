@@ -1,3 +1,11 @@
+section p {
+    display: inline-block;
+}
+
+a {
+    display: inline-block;
+}
+
 .user-guess {
     display: inline-block;
 }
