@@ -1,0 +1,21 @@
+.user-guess {
+    display: inline-block;
+}
+
+.guess-tally {
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+#guesses {
+    display: inline-block;
+    margin-left: .5rem;
+}
+
+.guess-tally p {
+    display: inline-block;
+}
+
+#game {
+    display: block;
+}
