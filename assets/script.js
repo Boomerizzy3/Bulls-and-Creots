@@ -30,7 +30,7 @@ function userguess() {
     }
     if (x[1] == computernumber1[1]) {
         bull++
-    } else if (x[1] == computernumber1[1]){
+    } else if (x[1] == computernumber1[0]){
         creot++
     } else if (x[1] == computernumber1[2]){
         creot++
@@ -39,23 +39,22 @@ function userguess() {
     }
     if (x[2] == computernumber1[2]) {
         bull++
-    } else if (x[2] == computernumber1[1]){
+    } else if (x[2] == computernumber1[0]){
         creot++
-    } else if (x[2] == computernumber1[2]){
+    } else if (x[2] == computernumber1[1]){
         creot++
     } else if (x[2] == computernumber1[3]){
         creot++
     }
     if (x[3] == computernumber1[3]) {
         bull++
+    } else if (x[3] == computernumber1[0]){
+        creot++
     } else if (x[3] == computernumber1[1]){
         creot++
     } else if (x[3] == computernumber1[2]){
         creot++
-    } else if (x[3] == computernumber1[3]){
-        creot++
     }
-
     const para = document.createElement("p");
     const node = document.createTextNode(x + " - " + bull + " Bull(s) and " + creot + " Creot(s)");
     para.appendChild(node);
