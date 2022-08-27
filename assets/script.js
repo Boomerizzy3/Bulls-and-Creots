@@ -57,7 +57,7 @@ function userguess() {
     }
 
     const para = document.createElement("p");
-    const node = document.createTextNode(x + " - " + bull + "Bull(s) and " + creot + "Creot(s)");
+    const node = document.createTextNode(x + " - " + bull + " Bull(s) and " + creot + " Creot(s)");
     para.appendChild(node);
     const element = document.getElementById("game");
     element.appendChild(para);
