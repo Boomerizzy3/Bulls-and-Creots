@@ -76,4 +76,12 @@ if (computernumber1.includes(1)) {
     console.log("hello");
 }
 
+var input = document.getElementById("your-number");
+input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("your-button").click();
+    }
+  });
+
 console.log(guessnumber)

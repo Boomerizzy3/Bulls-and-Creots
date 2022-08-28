@@ -14,28 +14,30 @@
     </h1>
     </header>
     <main>
-      <section class="instructions">
-        <p>
-        Bulls and Creots (also known as Bulls and Cows) is a code-breaking mind or paper and pencil game for two or more players, predating the commercially marketed board game Mastermind and the hit word game Wordle.
-        The game is played in turns by two opponents who aim to decipher the other's secret code by trial and error.
-        Each guess should be a 4 digit number with NO repeating numbers. If your guess contains a correct number in the correct position this is a "Bull." If your guess contains the correct number in an incorrect position this is a "Creot."
-        You win when your guess contains 4 Bulls. Try to win in the fewest number of guesses as possible! Have fun!
-        </p>
-
-        <p>Learn more at</p>
-        <a href="https://en.wikipedia.org/wiki/Bulls_and_Cows">https://en.wikipedia.org/wiki/Bulls_and_Cows</a>
-      </section>
-      <section class="user-guess">
-        <label for="your-number"></label>Enter your number</label>
-      <input type="text" maxlength = "4" id="your-number">
-      <button type="button" id="your-number"onclick="userguess()">Submit</button>
-      </section>
-      <section class="guess-tally">
-        <p>
-          Guesses: <p id="guesses">0</p>
-        </p>
-      </section>
-      <section id="game">
+      <section class="player-game">
+        <section class="instructions">
+          <p>
+          Bulls and Creots (also known as Bulls and Cows) is a code-breaking mind or paper and pencil game for two or more players, predating the commercially marketed board game Mastermind and the hit word game Wordle.
+          The game is played in turns by two opponents who aim to decipher the other's secret code by trial and error.
+          Each guess should be a 4 digit number with NO repeating numbers. If your guess contains a correct number in the correct position this is a "Bull." If your guess contains the correct number in an incorrect position this is a "Creot."
+          You win when your guess contains 4 Bulls. Try to win in the fewest number of guesses as possible! Have fun!
+          </p>
+  
+          <p>Learn more at</p>
+          <a href="https://en.wikipedia.org/wiki/Bulls_and_Cows">https://en.wikipedia.org/wiki/Bulls_and_Cows</a>
+        </section>
+        <section class="user-guess">
+          <label for="your-number"></label>Enter your number</label>
+        <input type="text" maxlength = "4" id="your-number">
+        <button type="button" id="your-button"onclick="userguess()">Submit</button>
+        </section>
+        <section class="guess-tally">
+          <p>
+            Guesses: <p id="guesses">0</p>
+          </p>
+        </section>
+        <section id="game">
+        </section>
       </section>
     </main>
     <script src="assets\script.js"></script>
