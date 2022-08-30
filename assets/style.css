@@ -2,8 +2,19 @@ section p {
     display: inline-block;
 }
 
+.gamechoice {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.gamechoice button {
+    margin: 2rem;
+}
+
 a {
     display: inline-block;
+    margin-bottom: 2rem;
 }
 
 .user-guess {
@@ -11,8 +22,10 @@ a {
 }
 
 .guess-tally {
-    display: inline-block;
+    display: flex;
+    flex-wrap: nowrap;
     margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 #guesses {
@@ -24,6 +37,51 @@ a {
     display: inline-block;
 }
 
-#game p {
+.maingame {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+.computerside {
+    display: none;
+}
+
+/* .userside {
+}
+
+.computerside {
+} */
+
+.results {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+#game p, #cpu-game p {
     display: block;
+}
+
+.spacer {
+    display: inline-block;
+    margin-left: .5rem;
+}
+
+@media screen and (max-width: 500px) {
+    .maingame {
+        justify-content: inherit
+    }
+    #game, #cpu-game, input {
+        font-size: .85rem;
+    }
+    #user-submit-number, #your-number {
+        width: 7rem;
+    }
+
+    .guess-tally {
+        position: relative;
+        bottom: .5rem;
+    }
 }

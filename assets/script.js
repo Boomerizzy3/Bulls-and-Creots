@@ -1,5 +1,8 @@
-const computernumber = [0, 1, 2, 3, 4, 5, 6, 7, 8 , 9];
+const computernumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var guessnumber = document.getElementById("guesses").innerHTML;
+const element = document.querySelector("#computer-button");
+var gamemode = 1
+var computerguess = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 for (let i = computernumber.length -1; i > 0; i--) {
   let j = Math.floor(Math.random() * i)
@@ -10,15 +13,51 @@ for (let i = computernumber.length -1; i > 0; i--) {
 
 var computernumber1 = [computernumber[0], computernumber[1], computernumber[2], computernumber[3]]
 
-console.log(computernumber1);
 
 function userguess() {
+
+    const userguessfailsafe = document.getElementById("your-number").value;
+
+    if (Number(userguessfailsafe) < 1000) {
+        alert("Your guess must be 4 digits long. Please try again.")
+        return;
+    }
+
+    var guesspreventreapeating = Array.from(userguessfailsafe);
+
+    for (let i = 1; i < guesspreventreapeating.length; i++) {
+        if (guesspreventreapeating[0] == guesspreventreapeating[i]) {
+            alert("Your number cannot contain any repeating numbers. Please try again.")
+                 return;
+        }
+      }
+    
+      for (let i = 2; i < guesspreventreapeating.length; i++) {
+        if (guesspreventreapeating[1] == guesspreventreapeating[i]) {
+            alert("Your number cannot contain any repeating numbers. Please try again.")
+                 return;
+        }
+      }
+
+      for (let i = 3; i < guesspreventreapeating.length; i++) {
+        if (guesspreventreapeating[2] == guesspreventreapeating[i]) {
+            alert("Your number cannot contain any repeating numbers. Please try again.")
+                 return;
+        }
+      }
+
+    if (gamemode == 0) {
+        alert("Please enter your number for the computer to guess.")
+        return;
+    }
+
     var creot = 0
     var bull = 0
-    console.log("bull is " + bull)
-    console.log("creot is " + creot)
+    var cpucreot = 0
+    var cpubull = 0
+
     var x = document.getElementById("your-number").value;
-    console.log(x)
+
     if (x[0] == computernumber1[0]) {
         bull++
     } else if (x[0] == computernumber1[1]){
@@ -62,6 +101,78 @@ function userguess() {
     element.appendChild(para);
     guessnumber++
     document.getElementById("guesses").innerHTML = guessnumber;
+    
+    //computer guess function below here
+
+    var usersubmitnumber = document.getElementById("user-submit-number").value;
+
+    for (let i = computerguess.length -1; i > 0; i--) {
+        let j = Math.floor(Math.random() * i)
+        let k = computerguess[i]
+        computerguess[i] = computerguess[j]
+        computerguess[j] = k
+      }
+    
+      console.log(computerguess);
+
+    var y = [computerguess[0], computerguess[1], computerguess[2], computerguess[3]];
+
+    console.log(y)
+
+    if (y[0] == usersubmitnumber[0]) {
+        cpubull++
+    } else if (y[0] == usersubmitnumber[1]){
+        cpucreot++
+    } else if (y[0] == usersubmitnumber[2]){
+        cpucreot++
+    } else if (y[0] == usersubmitnumber[3]){
+        cpucreot++
+    }
+    if (y[1] == usersubmitnumber[1]) {
+        cpubull++
+    } else if (y[1] == usersubmitnumber[0]){
+        cpucreot++
+    } else if (y[1] == usersubmitnumber[2]){
+        cpucreot++
+    } else if (y[1] == usersubmitnumber[3]){
+        cpucreot++
+    }
+    if (y[2] == usersubmitnumber[2]) {
+        cpubull++
+    } else if (y[2] == usersubmitnumber[1]){
+        cpucreot++
+    } else if (y[2] == usersubmitnumber[0]){
+        cpucreot++
+    } else if (y[2] == usersubmitnumber[3]){
+        cpucreot++
+    }
+    if (y[3] == usersubmitnumber[3]) {
+        cpubull++
+    } else if (y[3] == usersubmitnumber[1]){
+        cpucreot++
+    } else if (y[3] == usersubmitnumber[2]){
+        cpucreot++
+    } else if (y[3] == usersubmitnumber[0]){
+        cpucreot++
+    }
+
+    const para2 = document.createElement("p");
+    const node2 = document.createTextNode(y.join("") + " - " + cpubull + " Bull(s) and " + cpucreot + " Creot(s)");
+    para2.appendChild(node2);
+    const element2 = document.getElementById("cpu-game");
+    element2.appendChild(para2);
+
+    if (cpubull == 4) {
+        const para2 = document.createElement("p");
+        const node2 = document.createTextNode("Computer wins");
+        para2.appendChild(node2);
+        const element2 = document.getElementById("cpu-game");
+        element2.appendChild(para2);
+    }
+
+    console.log(y + " - " + cpubull + " Bull(s) and " + cpucreot + " Creot(s)")
+
+    //computer guess funtion above here
 
     if (bull == 4) {
     const para = document.createElement("p");
@@ -72,9 +183,6 @@ function userguess() {
     }
 }
 
-if (computernumber1.includes(1)) {
-    console.log("hello");
-}
 
 var input = document.getElementById("your-number");
 input.addEventListener("keypress", function(event) {
@@ -84,4 +192,100 @@ input.addEventListener("keypress", function(event) {
     }
   });
 
-console.log(guessnumber)
+var input1 = document.getElementById("user-submit-number");
+input1.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("computer-button").click();
+    }
+  });
+
+  function usernumber() {
+    const usernumberfailsafe = document.getElementById("user-submit-number").value;
+
+    if (Number(usernumberfailsafe) < 1000) {
+        alert("Your number must be 4 digits long. Please try again.")
+        return;
+    }
+
+    var userpreventreapeating = Array.from(usernumberfailsafe);
+
+    for (let i = 1; i < userpreventreapeating.length; i++) {
+        if (userpreventreapeating[0] == userpreventreapeating[i]) {
+            alert("Your number cannot contain any repeating numbers. Please try again.")
+                 return;
+        }
+      }
+    
+      for (let i = 2; i < userpreventreapeating.length; i++) {
+        if (userpreventreapeating[1] == userpreventreapeating[i]) {
+            alert("Your number cannot contain any repeating numbers. Please try again.")
+                 return;
+        }
+      }
+
+      for (let i = 3; i < userpreventreapeating.length; i++) {
+        if (userpreventreapeating[2] == userpreventreapeating[i]) {
+            alert("Your number cannot contain any repeating numbers. Please try again.")
+                 return;
+        }
+      }
+
+    element.style.opacity = "85%";
+    document.getElementById("computer-button").disabled = true;
+    document.getElementById("user-submit-number").disabled = true;
+    gamemode++;
+  }
+
+function competitivefun() {
+    element.style.opacity = "100%";
+    document.getElementById("computer-button").disabled = false;
+    document.getElementById("user-submit-number").disabled = false;
+    document.querySelector(".computerside").style.display = "block"
+    document.querySelector(".maingame").style.justifyContent = "space-around";
+    document.querySelector(".results").style.justifyContent = "space-around";
+
+    const remove1 = document.getElementById("game");
+
+    while (remove1.hasChildNodes()) {
+        remove1.removeChild(remove1.firstChild)
+    }
+
+    const remove = document.getElementById("cpu-game");
+
+    while (remove.hasChildNodes()) {
+        remove.removeChild(remove.firstChild)
+    }
+
+    guessnumber *= 0;
+    document.getElementById("guesses").innerHTML = guessnumber;
+    if (gamemode == 1) {
+    gamemode--;
+    }
+}
+
+function singleplayerfun() {
+    document.querySelector(".computerside").style.display = "none"
+    document.querySelector(".maingame").style.justifyContent = "left";
+    document.querySelector(".results").style.justifyContent = "left";
+
+    const remove1 = document.getElementById("game");
+
+    while (remove1.hasChildNodes()) {
+        remove1.removeChild(remove1.firstChild)
+    }
+
+    const remove = document.getElementById("cpu-game");
+
+    while (remove.hasChildNodes()) {
+        remove.removeChild(remove.firstChild)
+    }
+
+    guessnumber *= 0;
+    document.getElementById("guesses").innerHTML = guessnumber;
+    if (gamemode == 0) {
+    gamemode++;
+    }
+}
+
+

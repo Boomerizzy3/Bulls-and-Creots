@@ -23,20 +23,40 @@
           You win when your guess contains 4 Bulls. Try to win in the fewest number of guesses as possible! Have fun!
           </p>
   
-          <p>Learn more at</p>
+          <p>Learn more at: </p>
           <a href="https://en.wikipedia.org/wiki/Bulls_and_Cows">https://en.wikipedia.org/wiki/Bulls_and_Cows</a>
         </section>
-        <section class="user-guess">
-          <label for="your-number"></label>Enter your number</label>
-        <input type="text" maxlength = "4" id="your-number">
-        <button type="button" id="your-button"onclick="userguess()">Submit</button>
+        <section class="gamechoice">
+          <button type="button" id="single-player"onclick="singleplayerfun()">New Single Player game</button>
+          <button type="button" id="competitive"onclick="competitivefun()">New Competitive game</button>
         </section>
-        <section class="guess-tally">
-          <p>
-            Guesses: <p id="guesses">0</p>
-          </p>
+        <section class="maingame">
+          <section class="userside">
+            <section class="user-guess">
+            <label for="your-number"></label>Enter your guess</label>
+            <input type="text" maxlength = "4" id="your-number" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" />
+            <button type="button" id="your-button"onclick="userguess()">Submit</button>
+            </section>
+          </section>
+          <section class="guess-tally">
+            <p>
+              Guesses: <p id="guesses">0</p>
+            </p>
+          </section>
+          <section class="computerside">
+            <section class="computer-guess">
+              <label for="computer-number"></label>Enter your number</label>
+            <input type="text" maxlength = "4" id="user-submit-number" oninput="this.value = this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g, '$1');" />
+            <button type="button" id="computer-button"onclick="usernumber()">Submit</button>
+            </section>
+          </section>
         </section>
-        <section id="game">
+        <section class="results">
+          <section id="game">
+          </section>
+          <section class="spacer"></section>
+          <section id="cpu-game">
+          </section>
         </section>
       </section>
     </main>
