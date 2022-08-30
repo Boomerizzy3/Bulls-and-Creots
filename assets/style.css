@@ -48,6 +48,10 @@ a {
     display: none;
 }
 
+#cpu-game {
+    display: none;   
+}
+
 /* .userside {
 }
 
