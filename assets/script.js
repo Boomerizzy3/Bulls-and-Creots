@@ -242,6 +242,7 @@ function competitivefun() {
     document.getElementById("computer-button").disabled = false;
     document.getElementById("user-submit-number").disabled = false;
     document.querySelector(".computerside").style.display = "block"
+    document.querySelector("#cpu-game").style.display = "block"
     document.querySelector(".maingame").style.justifyContent = "space-around";
     document.querySelector(".results").style.justifyContent = "space-around";
 
@@ -266,6 +267,7 @@ function competitivefun() {
 
 function singleplayerfun() {
     document.querySelector(".computerside").style.display = "none"
+    document.querySelector("#cpu-game").style.display = "none"
     document.querySelector(".maingame").style.justifyContent = "left";
     document.querySelector(".results").style.justifyContent = "left";
 
