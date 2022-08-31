@@ -14,7 +14,7 @@ section p {
 
 a {
     display: inline-block;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 .user-guess {
@@ -71,6 +71,10 @@ a {
 .spacer {
     display: inline-block;
     margin-left: .5rem;
+}
+
+footer {
+    margin-top: 10rem;
 }
 
 @media screen and (max-width: 500px) {

@@ -45,7 +45,7 @@ function userguess() {
                  return;
         }
       }
-
+    
     if (gamemode == 0) {
         alert("Please enter your number for the computer to guess.")
         return;
@@ -181,6 +181,9 @@ function userguess() {
     const element = document.getElementById("game");
     element.appendChild(para);
     }
+
+    document.getElementById("your-number").value = null;
+
 }
 
 
