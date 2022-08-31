@@ -104,6 +104,13 @@ footer {
 }
 
 @media screen and (max-width: 500px) {
+    main {
+        margin: 0rem;
+    }
+    header {
+        margin: 0rem;
+        margin-bottom: -2rem;
+    }
     .maingame {
         justify-content: inherit;
         align-items: flex-end;
@@ -122,10 +129,16 @@ footer {
 
     .gamechoice {
         justify-content: space-between;
+        margin: 2rem;
     }
 
     .gamechoice button {
         margin-left: -1.1rem;
         margin-right: -1.1rem;
+    }
+
+    .instructions {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
