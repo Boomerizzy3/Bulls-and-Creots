@@ -1,3 +1,28 @@
+main, header {
+    margin: 2rem;
+}
+
+header {
+    background-color: gray;
+    margin-bottom: -2rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: white;
+}
+
+.instructions {
+    background-color: darkgray;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
 section p {
     display: inline-block;
 }
@@ -10,6 +35,7 @@ section p {
 
 .gamechoice button {
     margin: 2rem;
+    color: blue;
 }
 
 a {
@@ -79,7 +105,8 @@ footer {
 
 @media screen and (max-width: 500px) {
     .maingame {
-        justify-content: inherit
+        justify-content: inherit;
+        align-items: flex-end;
     }
     #game, #cpu-game, input {
         font-size: .85rem;
@@ -91,5 +118,14 @@ footer {
     .guess-tally {
         position: relative;
         bottom: .5rem;
+    }
+
+    .gamechoice {
+        justify-content: space-between;
+    }
+
+    .gamechoice button {
+        margin-left: -1.1rem;
+        margin-right: -1.1rem;
     }
 }
