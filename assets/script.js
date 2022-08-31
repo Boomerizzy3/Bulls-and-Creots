@@ -21,6 +21,9 @@ console.log(computernumber1);
 
 function userguess() {
 
+    cpuwinornot = Math.floor(Math.random() * 4)
+    console.log("cpuwinornot = " + cpuwinornot);
+
     var computernumber1 = [computernumber[0], computernumber[1], computernumber[2], computernumber[3]]
     console.log(computernumber1);
 
@@ -114,14 +117,18 @@ function userguess() {
 
     var usersubmitnumber = document.getElementById("user-submit-number").value;
 
-    for (let i = computerguess.length -1; i > 0; i--) {
-        let j = Math.floor(Math.random() * i)
-        let k = computerguess[i]
-        computerguess[i] = computerguess[j]
-        computerguess[j] = k
-      }
+    if (guessnumber > 7 && cpuwinornot == 3) {
+        computerguess = usersubmitnumber
+    } else {
+        for (let i = computerguess.length -1; i > 0; i--) {
+            let j = Math.floor(Math.random() * i)
+            let k = computerguess[i]
+            computerguess[i] = computerguess[j]
+            computerguess[j] = k
+        }
+    }
     
-      console.log(computerguess);
+    console.log(computerguess);
 
     var y = [computerguess[0], computerguess[1], computerguess[2], computerguess[3]];
 
