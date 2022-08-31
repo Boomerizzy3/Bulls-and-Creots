@@ -21,6 +21,7 @@ h1 {
     padding-right: 4rem;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
+    line-height: 1.4rem;
 }
 
 section p {
@@ -120,6 +121,7 @@ footer {
     }
     #user-submit-number, #your-number {
         width: 7rem;
+        font-size: .85rem;
     }
 
     .guess-tally {
@@ -133,11 +135,12 @@ footer {
     }
 
     .gamechoice button {
-        margin-left: -1.1rem;
-        margin-right: -1.1rem;
+        margin-left: -1.5rem;
+        margin-right: -1.5rem;
     }
 
     .instructions {
+        font-size: .85rem;
         padding-left: 1rem;
         padding-right: 1rem;
     }
