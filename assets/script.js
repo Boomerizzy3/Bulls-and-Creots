@@ -4,17 +4,25 @@ const element = document.querySelector("#computer-button");
 var gamemode = 1
 var computerguess = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-for (let i = computernumber.length -1; i > 0; i--) {
-  let j = Math.floor(Math.random() * i)
-  let k = computernumber[i]
-  computernumber[i] = computernumber[j]
-  computernumber[j] = k
+
+function randomize() { 
+    for (let i = computernumber.length -1; i > 0; i--) {
+    let j = Math.floor(Math.random() * i)
+    let k = computernumber[i]
+    computernumber[i] = computernumber[j]
+    computernumber[j] = k
+}
 }
 
-var computernumber1 = [computernumber[0], computernumber[1], computernumber[2], computernumber[3]]
+randomize()
 
+var computernumber1 = [computernumber[0], computernumber[1], computernumber[2], computernumber[3]]
+console.log(computernumber1);
 
 function userguess() {
+
+    var computernumber1 = [computernumber[0], computernumber[1], computernumber[2], computernumber[3]]
+    console.log(computernumber1);
 
     const userguessfailsafe = document.getElementById("your-number").value;
 
@@ -168,6 +176,9 @@ function userguess() {
         para2.appendChild(node2);
         const element2 = document.getElementById("cpu-game");
         element2.appendChild(para2);
+        element.style.opacity = "85%";
+        document.getElementById("your-button").disabled = true;
+        document.getElementById("your-number").disabled = true;
     }
 
     console.log(y + " - " + cpubull + " Bull(s) and " + cpucreot + " Creot(s)")
@@ -180,6 +191,9 @@ function userguess() {
     para.appendChild(node);
     const element = document.getElementById("game");
     element.appendChild(para);
+    element.style.opacity = "85%";
+    document.getElementById("your-button").disabled = true;
+    document.getElementById("your-number").disabled = true;
     }
 
     document.getElementById("your-number").value = null;
@@ -241,9 +255,13 @@ input1.addEventListener("keypress", function(event) {
   }
 
 function competitivefun() {
+    randomize()
     element.style.opacity = "100%";
     document.getElementById("computer-button").disabled = false;
     document.getElementById("user-submit-number").disabled = false;
+    element.style.opacity = "100%";
+    document.getElementById("your-button").disabled = false;
+    document.getElementById("your-number").disabled = false;
     document.querySelector(".computerside").style.display = "block"
     document.querySelector("#cpu-game").style.display = "block"
     document.querySelector(".maingame").style.justifyContent = "space-around";
@@ -269,6 +287,10 @@ function competitivefun() {
 }
 
 function singleplayerfun() {
+    randomize()
+    element.style.opacity = "100%";
+    document.getElementById("your-button").disabled = false;
+    document.getElementById("your-number").disabled = false;
     document.querySelector(".computerside").style.display = "none"
     document.querySelector("#cpu-game").style.display = "none"
     document.querySelector(".maingame").style.justifyContent = "left";
