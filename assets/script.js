@@ -29,7 +29,7 @@ function userguess() {
 
     const userguessfailsafe = document.getElementById("your-number").value;
 
-    if (Number(userguessfailsafe) < 1000) {
+    if (userguessfailsafe.length <4 ) {
         alert("Your guess must be 4 digits long. Please try again.")
         return;
     }
@@ -227,7 +227,7 @@ input1.addEventListener("keypress", function(event) {
   function usernumber() {
     const usernumberfailsafe = document.getElementById("user-submit-number").value;
 
-    if (Number(usernumberfailsafe) < 1000) {
+    if (usernumberfailsafe.length <4) {
         alert("Your number must be 4 digits long. Please try again.")
         return;
     }
