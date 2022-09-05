@@ -2,7 +2,7 @@ const computernumber = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var guessnumber = document.getElementById("guesses").innerHTML;
 const element = document.querySelector("#computer-button");
 var gamemode = 1
-var computerguess = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var submit = 1
 
 
 function randomize() { 
@@ -57,7 +57,7 @@ function userguess() {
         }
       }
     
-    if (gamemode == 0) {
+    if (submit == 0) {
         alert("Please enter your number for the computer to guess.")
         return;
     }
@@ -115,6 +115,7 @@ function userguess() {
     
     //computer guess function below here
 
+    var computerguess = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     var usersubmitnumber = document.getElementById("user-submit-number").value;
 
     if (guessnumber > 7 && cpuwinornot == 3) {
@@ -177,7 +178,7 @@ function userguess() {
     const element2 = document.getElementById("cpu-game");
     element2.appendChild(para2);
 
-    if (cpubull == 4) {
+    if (gamemode == 0 && cpubull == 4) {
         const para2 = document.createElement("p");
         const node2 = document.createTextNode("Computer wins");
         para2.appendChild(node2);
@@ -258,7 +259,8 @@ input1.addEventListener("keypress", function(event) {
     element.style.opacity = "85%";
     document.getElementById("computer-button").disabled = true;
     document.getElementById("user-submit-number").disabled = true;
-    gamemode++;
+    if (submit == 0) {
+    submit++}
   }
 
 function competitivefun() {
@@ -289,8 +291,10 @@ function competitivefun() {
     guessnumber *= 0;
     document.getElementById("guesses").innerHTML = guessnumber;
     if (gamemode == 1) {
-    gamemode--;
-    }
+    gamemode--;}
+    if (submit == 1) {
+        submit--}
+    
 }
 
 function singleplayerfun() {
@@ -320,6 +324,6 @@ function singleplayerfun() {
     if (gamemode == 0) {
     gamemode++;
     }
+    if (submit == 0) {
+        submit++}
 }
-
-
