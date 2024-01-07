@@ -3,7 +3,104 @@ var guessnumber = document.getElementById("guesses").innerHTML;
 const element = document.querySelector("#computer-button");
 var gamemode = 1
 var submit = 1
+var stage = 1;
+var computerguess = [
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [],
+    [],
+    [],
+];
+var confirmedNumbers = [];
+var confirmedOut = [];
+var fiftyFifty = [];
+var guesstotal = 0;
+var possibleNumbers = [];
 
+function bullsandcretos(guess, answer) {
+
+    var bullsandcreots = [0, 0];
+
+    if (guess[0] == answer[0]) {
+    bullsandcreots[0]++
+} else if (guess[0] == answer[1]){
+    bullsandcreots[1]++
+} else if (guess[0] == answer[2]){
+    bullsandcreots[1]++
+} else if (guess[0] == answer[3]){
+    bullsandcreots[1]++
+}
+if (guess[1] == answer[1]) {
+    bullsandcreots[0]++
+} else if (guess[1] == answer[0]){
+    bullsandcreots[1]++
+} else if (guess[1] == answer[2]){
+    bullsandcreots[1]++
+} else if (guess[1] == answer[3]){
+    bullsandcreots[1]++
+}
+if (guess[2] == answer[2]) {
+    bullsandcreots[0]++
+} else if (guess[2] == answer[1]){
+    bullsandcreots[1]++
+} else if (guess[2] == answer[0]){
+    bullsandcreots[1]++
+} else if (guess[2] == answer[3]){
+    bullsandcreots[1]++
+}
+if (guess[3] == answer[3]) {
+    bullsandcreots[0]++
+} else if (guess[3] == answer[1]){
+    bullsandcreots[1]++
+} else if (guess[3] == answer[2]){
+    bullsandcreots[1]++
+} else if (guess[3] == answer[0]){
+    bullsandcreots[1]++
+}
+return bullsandcreots;
+};
+
+function preventRepeating(number) {
+
+for (let i = 1; i < number.length; i++) {
+    if (number[0] == number[i]) {
+        return false;
+    }
+  }
+
+  for (let i = 2; i < number.length; i++) {
+    if (number[1] == number[i]) {
+        return false;
+    }
+  }
+
+  for (let i = 3; i < number.length; i++) {
+    if (number[2] == number[i]) {
+        return false;
+    } else return true;
+  }
+}
+
+for (let i = 1; i < computerguess.length; i++) {
+    computerguess[i] = computerguess[0];
+};
+
+console.log(computerguess);
+
+for (let i = 0; i < 9877; i++) {
+    index = [...i+''].map(n=>+n);
+    index2 = 0
+    index3 = 0
+    index4 = 0
+    if(i > 9){index2 = index[index.length - 2]}
+    if(i > 99){index3 = index[index.length - 3]}
+    if(i > 999){index4 = index[index.length - 4]}
+    potentialNumber = [computerguess[0][index4],computerguess[0][index3],computerguess[0][index2],computerguess[0][index[index.length - 1]]]
+    if(preventRepeating(potentialNumber)) {
+    possibleNumbers.push(potentialNumber)
+    }
+};
+
+console.log(possibleNumbers);
 
 function randomize() { 
     for (let i = computernumber.length -1; i > 0; i--) {
@@ -17,15 +114,15 @@ function randomize() {
 randomize()
 
 var computernumber1 = [computernumber[0], computernumber[1], computernumber[2], computernumber[3]]
-console.log(computernumber1);
+// console.log(computernumber1);
 
 function userguess() {
 
     cpuwinornot = Math.floor(Math.random() * 4)
-    console.log("cpuwinornot = " + cpuwinornot);
+    // console.log("cpuwinornot = " + cpuwinornot);
 
     var computernumber1 = [computernumber[0], computernumber[1], computernumber[2], computernumber[3]]
-    console.log(computernumber1);
+    // console.log(computernumber1);
 
     const userguessfailsafe = document.getElementById("your-number").value;
 
@@ -105,6 +202,8 @@ function userguess() {
     } else if (x[3] == computernumber1[2]){
         creot++
     }
+
+
     const para = document.createElement("p");
     const node = document.createTextNode(x + " - " + bull + " Bull(s) and " + creot + " Creot(s)");
     para.appendChild(node);
@@ -115,25 +214,116 @@ function userguess() {
     
     //computer guess function below here
 
-    var computerguess = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     var usersubmitnumber = document.getElementById("user-submit-number").value;
-
-    if (guessnumber > 7 && cpuwinornot == 3) {
-        computerguess = usersubmitnumber
-    } else {
-        for (let i = computerguess.length -1; i > 0; i--) {
+    var prevguesstotal = 0
+    var y = [];
+    if (stage == 1) {
+        for (let i = computerguess[0].length -1; i > 0; i--) {
             let j = Math.floor(Math.random() * i)
-            let k = computerguess[i]
-            computerguess[i] = computerguess[j]
-            computerguess[j] = k
+            let k = computerguess[0][i]
+            computerguess[0][i] = computerguess[0][j]
+            computerguess[0][j] = k
         }
+        y = [computerguess[0][0], computerguess[1][1], computerguess[2][2], computerguess[3][3]];
+    };
+
+
+    if (stage == 2) {
+        y = [computerguess[0][4], computerguess[1][5], computerguess[2][6], computerguess[3][7]];
+    };
+
+    var a = [];
+
+    if (stage == 3 && guesstotal == 4){
+        confirmedOut.push(computerguess[0][8], computerguess[0][9]);
+        for (let i = 0; i < possibleNumbers.length; i++) {
+            if (!possibleNumbers[i].includes(confirmedOut[0]) && !possibleNumbers[i].includes(confirmedOut[1])) {
+                a.push(possibleNumbers[i])
+            }
+        }
+        // console.log(a)
+        possibleNumbers = a;
     }
+
+    if (stage == 3 && guesstotal == 3){
+        fiftyFifty.push(computerguess[0][8], computerguess[0][9]);
+        for (let i = 0; i < possibleNumbers.length; i++) {
+            if (possibleNumbers[i].includes(fiftyFifty[0]) || possibleNumbers[i].includes(fiftyFifty[1])) {
+                a.push(possibleNumbers[i])
+            }
+        }
+        // console.log(a)
+        possibleNumbers = a;
+    }
+
+    if (stage == 3 && guesstotal == 2){
+        confirmedNumbers.push(computerguess[0][8], computerguess[0][9]);
+        for (let i = 0; i < possibleNumbers.length; i++) {
+            if (possibleNumbers[i].includes(confirmedNumbers[0]) && possibleNumbers[i].includes(confirmedNumbers[1])) {
+                a.push(possibleNumbers[i])
+            }
+        }
+        // console.log(a)
+        possibleNumbers = a;
+    }
+
+    if (stage == 3) {
+        y = [computerguess[0][8], computerguess[1][9], computerguess[2][0], computerguess[3][1]];
+    };
+
+    if (stage == 4) {
+        stageIndex = Math.floor(Math.random() * possibleNumbers.length)
+        y = possibleNumbers[stageIndex]
+        stage--
+    };
+
+    stage++
+
+
+    // if (stage == 2 && guesstotal == 2) {
+    //     y = [computerguess[0][4], computerguess[1][5], computerguess[2][6], computerguess[3][7]];
+    //     confirmedNumbers.push(computerguess[0][8], computerguess[0][9]);
+    //     console.log(confirmedNumbers);
+    //     console.log("stagegs2")
+    // } else if (stage == 2 && guesstotal == 3) {
+    //     y = [computerguess[0][0], computerguess[1][1], computerguess[2][2], computerguess[3][9]];
+    //     console.log("stagegs3")
+    // } else if (stage == 2 && guesstotal == 4) {
+    //     confirmedOut.push(computerguess[0][8], computerguess[0][9]);
+    //     stage = 4
+    //     console.log("stagegs4")
+    // };
+
+    // if (stage == 3) {
+    //     y = [computerguess[0][0], computerguess[1][1], computerguess[2][2], computerguess[3][8]];
+    //     console.log("stage3")
+    // };
+
+    // if (stage == 4) {
+    //     y = [computerguess[0][0], computerguess[1][1], computerguess[2][2], computerguess[3][stageIndex]];
+    //     stageIndex++
+    //     stage--
+    // };
+
+    // console.log(stage + "stage");
+
+
+
+
+    // if (guessnumber > 7 && cpuwinornot == 3) {
+    //     computerguess = usersubmitnumber
+    // } else {
+    //     for (let i = computerguess.length -1; i > 0; i--) {
+    //         let j = Math.floor(Math.random() * i)
+    //         let k = computerguess[i]
+    //         computerguess[i] = computerguess[j]
+    //         computerguess[j] = k
+    //     }
+    // }
     
-    console.log(computerguess);
+    // console.log(computerguess);
 
-    var y = [computerguess[0], computerguess[1], computerguess[2], computerguess[3]];
-
-    console.log(y)
+    // console.log(y)
 
     if (y[0] == usersubmitnumber[0]) {
         cpubull++
@@ -172,6 +362,27 @@ function userguess() {
         cpucreot++
     }
 
+    guesstotal = guesstotal + cpucreot + cpubull;
+    prevguesstotal = cpucreot + cpubull;
+    if (prevguesstotal == 0) {
+        confirmedOut.push(y[0], y[1], y[2], y[3]);
+        for (let i = 0; i < possibleNumbers.length; i++) {
+            if (!possibleNumbers[i].includes(confirmedOut[0]) && !possibleNumbers[i].includes(confirmedOut[1]) && !possibleNumbers[i].includes(confirmedOut[2]) && !possibleNumbers[i].includes(confirmedOut[3]) && !possibleNumbers[i].includes(confirmedOut[4]) && !possibleNumbers[i].includes(confirmedOut[5])) {
+                a.push(possibleNumbers[i])
+            }
+        }
+        possibleNumbers = a;
+    }
+    
+    var a = [];
+    for (let i = 0; i < possibleNumbers.length; i++) {
+        if (bullsandcretos(y, possibleNumbers[i])[0] == bullsandcretos(y, usersubmitnumber)[0] || bullsandcretos(y, possibleNumbers[i])[1] == bullsandcretos(y, usersubmitnumber)[1]) {
+            a.push(possibleNumbers[i])
+        }
+    };
+    possibleNumbers = a;
+    console.log(possibleNumbers)
+
     const para2 = document.createElement("p");
     const node2 = document.createTextNode(y.join("") + " - " + cpubull + " Bull(s) and " + cpucreot + " Creot(s)");
     para2.appendChild(node2);
@@ -189,7 +400,7 @@ function userguess() {
         document.getElementById("your-number").disabled = true;
     }
 
-    console.log(y + " - " + cpubull + " Bull(s) and " + cpucreot + " Creot(s)")
+    // console.log(y + " - " + cpubull + " Bull(s) and " + cpucreot + " Creot(s)")
 
     //computer guess funtion above here
 
@@ -292,6 +503,7 @@ function competitivefun() {
     document.getElementById("guesses").innerHTML = guessnumber;
     if (gamemode == 1) {
     gamemode--;}
+    stage = 1
     if (submit == 1) {
         submit--}
     
